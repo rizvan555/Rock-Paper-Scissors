@@ -46,9 +46,9 @@ function makeSelection(selection) {
   round++;
 
   if (result === "win") {
-    userCountDisplay++;
+    userCountDisplay.innerHTML = parseInt(userCountDisplay.innerHTML) + 1;
   } else if (result === "lose") {
-    compCountDisplay++;
+    compCountDisplay.innerHTML = parseInt(compCountDisplay.innerHTML) + 1;
   }
 
   if (round === 5) {

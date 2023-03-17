@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/media.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>Rock Paper Scissors</h1>
+    </header>
+    <main>
+      <form onsubmit="return false" class="rounds-section">
+        <h2>how many rounds?</h2>
+        <div class="up-container">
+          <div class="round5__container">
+            <label for="count-5">5</label>
+            <input type="radio" class="round-5" name="rounds" />
+          </div>
+          <div class="round10__container">
+            <label for="count-10">10</label>
+            <input type="radio" class="round-10" name="rounds" />
+          </div>
+        </div>
+        <div class="down-container">
+          <div class="round15__container">
+            <label for="count-15">15</label>
+            <input type="radio" class="round-15" name="rounds" />
+          </div>
+          <div class="round20__container">
+            <label for="count-20">20</label>
+            <input type="radio" class="round-20" name="rounds" />
+          </div>
+        </div>
+      </form>
+      <section class="user-comp__section">
+        <div class="user-window">User</div>
+        <div class="comp-window">Comp</div>
+        <span class="counts">
+          <p class="user-count">0</p>
+          :
+          <p class="comp-count">0</p></span
+        >
+      </section>
+      <span class="start-command">Let's play</span>
+      <div class="button-container">
+        <button class="stone">Stone</button>
+        <button class="paper">Paper</button>
+        <button class="shears">Shears</button>
+      </div>
+    </main>
+    <footer>
+      <h3>MAKE YOUR MOVE</h3>
+      <a class="restart" href="#">restart</a>
+    </footer>
+    <script src="./assets/js/main.js"></script>
+  </body>
+</html>

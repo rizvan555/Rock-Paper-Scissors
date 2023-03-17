@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-size: 10px;
+  background-color: #000;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+header {
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+  padding: 20px;
+  color: #000;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.rounds-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30vw;
+  color: #fff;
+  font-size: 0.8rem;
+  padding: 20px;
+  gap: 20px;
+  border: 1px solid #fff;
+  margin-top: 10vh;
+}
+.up-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 15vw;
+}
+.down-container {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 15vw;
+}
+.round5__container,
+.round10__container,
+.round15__container,
+.round20__container {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+}
+
+.user-comp__section {
+  width: 30vw;
+  border: 1px solid #fff;
+  margin-top: 11vh;
+  color: #fff;
+  padding: 20px;
+  position: relative;
+}
+.counts {
+  display: flex;
+  justify-content: center;
+  font-size: 2.4rem;
+  gap: 20px;
+}
+.user-window {
+  position: absolute;
+  background-color: orange;
+  width: 8vw;
+  text-align: center;
+  padding: 10px;
+  top: 25px;
+  left: -20px;
+}
+.comp-window {
+  position: absolute;
+  background-color: orange;
+  width: 8vw;
+  text-align: center;
+  padding: 10px;
+  top: 25px;
+  right: -20px;
+}
+
+.start-command {
+  font-size: 1.5rem;
+  margin-top: 5vh;
+}
+.button-container {
+  display: flex;
+  margin-top: 5vh;
+  gap: 20px;
+}
+button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background-color: transparent;
+  color: #fff;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 5vh;
+  gap: 5vh;
+}

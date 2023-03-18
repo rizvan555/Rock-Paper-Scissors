@@ -1,9 +1,9 @@
 const userWindow = document.querySelector(".user-window");
 const compWindow = document.querySelector(".comp-window");
-const round5 = document.querySelector(".round5__container");
-const round10 = document.querySelector(".round10__container");
-const round15 = document.querySelector(".round15__container");
-const round20 = document.querySelector(".round20__container");
+const round5 = document.querySelector(".round5");
+const round10 = document.querySelector(".round10");
+const round15 = document.querySelector(".round15");
+const round20 = document.querySelector(".round20");
 const userCountDisplay = document.querySelector(".user-count");
 const compCountDisplay = document.querySelector(".comp-count");
 const startCommand = document.querySelector(".start-command");
@@ -15,9 +15,10 @@ const restartButton = document.querySelector(".restart");
 let playerScore = 0; //Variablen in diesem Code (playerScore, computerScore, round) sind so definiert, dass sie den Spielstand und die Anzahl der Runden enthalten.
 let computerScore = 0;
 let round = 0;
+const buttons = [stoneButton, paperButton, shearsButton];
+const moves = ["stone", "paper", "shears"]; //  Dieser Code definiert eine Liste von Aktionen, aus denen der Spieler wählen kann
 
 //Diese Funktion unten(payGame) bestimmt das Ergebnis des Spiels basierend auf der Wahl des Spielers und der zufälligen Wahl des Computers. Die Parameter playerSelection und computerSelection sind der Zug, den der Benutzer auswählt, und der Zug, den der Computer zufällig auswählt. Die Funktion gibt einen Wert zurück, wenn der Spieler gewinnt, verliert oder unentschieden spielt.
-
 function playGame(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
     return "tie";
@@ -34,8 +35,6 @@ function playGame(playerSelection, computerSelection) {
   }
 }
 
-const moves = ["stone", "paper", "shears"]; //  Dieser Code definiert eine Liste von Aktionen, aus denen der Spieler wählen kann
-
 function makeSelection(playerSelection) {
   const computerSelection = moves[Math.floor(Math.random() * 3)]; // Dieser Code bewirkt, dass der Computer einen zufälligen Zug auswählt.
   const result = playGame(playerSelection, computerSelection); // Dieser Code berechnet das Ergebnis des Spiels basierend auf der Wahl des Spielers und der Wahl des Computers.
@@ -51,52 +50,57 @@ function makeSelection(playerSelection) {
   }
 
   if (round === 5) {
-    if (playerScore > computerScore) {
-      startCommand.innerHTML = "You win!";
-    } else if (computerScore > playerScore) {
-      startCommand.innerHTML = "Computer wins!";
-    } else {
-      startCommand.innerHTML = "It's a tie!";
-    }
-    stoneButton.disabled = true;
-    paperButton.disabled = true;
-    shearsButton.disabled = true;
-  } else if (round === 10) {
-    if (playerScore > computerScore) {
-      startCommand.innerHTML = "You win!";
-    } else if (computerScore > playerScore) {
-      startCommand.innerHTML = "Computer wins!";
-    } else {
-      startCommand.innerHTML = "It's a tie!";
-    }
-    stoneButton.disabled = true;
-    paperButton.disabled = true;
-    shearsButton.disabled = true;
-  } else if (round === 15) {
-    if (playerScore > computerScore) {
-      startCommand.innerHTML = "You win!";
-    } else if (computerScore > playerScore) {
-      startCommand.innerHTML = "Computer wins!";
-    } else {
-      startCommand.innerHTML = "It's a tie!";
-    }
-    stoneButton.disabled = true;
-    paperButton.disabled = true;
-    shearsButton.disabled = true;
-  } else if (round === 20) {
-    if (playerScore > computerScore) {
-      startCommand.innerHTML = "You win!";
-    } else if (computerScore > playerScore) {
-      startCommand.innerHTML = "Computer wins!";
-    } else {
-      startCommand.innerHTML = "It's a tie!";
-    }
-    stoneButton.disabled = true;
-    paperButton.disabled = true;
-    shearsButton.disabled = true;
+    const winMessage =
+      playerScore > computerScore
+        ? "You win!"
+        : computerScore > playerScore
+        ? "Computer wins!"
+        : "It's a tie!";
+    startCommand.innerHTML = winMessage;
+    round5.disabled = true;
+  } else if (round > 5) {
+    buttons.forEach((button) => (button.disabled = true));
+  }
+
+  if (round === 10) {
+    const winMessage =
+      playerScore > computerScore
+        ? "You win!"
+        : computerScore > playerScore
+        ? "Computer wins!"
+        : "It's a tie!";
+    startCommand.innerHTML = winMessage;
+    round10.disabled = true;
+  } else if (round > 10) {
+    buttons.forEach((button) => (button.disabled = true));
+  }
+
+  if (round === 15) {
+    const winMessage =
+      playerScore > computerScore
+        ? "You win!"
+        : computerScore > playerScore
+        ? "Computer wins!"
+        : "It's a tie!";
+    startCommand.innerHTML = winMessage;
+    round15.disabled = true;
+  } else if (round > 15) {
+    buttons.forEach((button) => (button.disabled = true));
+  }
+
+  if (round === 20) {
+    const winMessage =
+      playerScore > computerScore
+        ? "You win!"
+        : computerScore > playerScore
+        ? "Computer wins!"
+        : "It's a tie!";
+    startCommand.innerHTML = winMessage;
+    round20.disabled = true;
+  } else if (round > 20) {
+    buttons.forEach((button) => (button.disabled = true));
   }
 }
-
 const clickStone = () => {
   makeSelection("stone");
 };
@@ -110,5 +114,3 @@ const clickShears = () => {
 restartButton.addEventListener("click", function () {
   location.reload();
 });
-
-

@@ -112,38 +112,3 @@ restartButton.addEventListener("click", function () {
 });
 
 
-
-
-// // Add event listeners to round containers
-// round5.addEventListener("click", function() {
-//   handleRoundSelection(5);
-// });
-// round10.addEventListener("click", function() {
-//   handleRoundSelection(10);
-// });
-// round15.addEventListener("click", function() {
-//   handleRoundSelection(15);
-// });
-// round20.addEventListener("click", function() {
-//   handleRoundSelection(20);
-// });
-
-// // Function to handle round selection
-// function handleRoundSelection(round10) {
-//   // Update round count
-//   round = round10;
-
-//   // Enable buttons
-//   stoneButton.disabled = false;
-//   paperButton.disabled = false;
-//   shearsButton.disabled = false;
-
-//   // Clear previous results
-//   userCountDisplay.innerHTML = "0";
-//   compCountDisplay.innerHTML = "0";
-//   startCommand.innerHTML = "Make your move!";
-
-//   // Reset scores
-//   playerScore = 0;
-//   computerScore = 0;
-// }

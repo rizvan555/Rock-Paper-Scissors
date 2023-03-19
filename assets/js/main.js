@@ -21,7 +21,7 @@ const moves = ["stone", "paper", "shears"]; //  Dieser Code definiert eine Liste
 //Diese Funktion unten(payGame) bestimmt das Ergebnis des Spiels basierend auf der Wahl des Spielers und der zufälligen Wahl des Computers. Die Parameter playerSelection und computerSelection sind der Zug, den der Benutzer auswählt, und der Zug, den der Computer zufällig auswählt. Die Funktion gibt einen Wert zurück, wenn der Spieler gewinnt, verliert oder unentschieden spielt.
 function playGame(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
-    return "tie";
+    return "draw";
   } else if (
     (playerSelection === "stone" && computerSelection === "shears") ||
     (playerSelection === "paper" && computerSelection === "stone") ||
@@ -58,11 +58,8 @@ function makeSelection(playerSelection) {
         : "It's a tie!";
     startCommand.innerHTML = winMessage;
     round5.disabled = true;
-  } else if (round > 5) {
     buttons.forEach((button) => (button.disabled = true));
-  }
-
-  if (round === 10) {
+  } else if (round === 10) {
     const winMessage =
       playerScore > computerScore
         ? "You win!"
@@ -71,11 +68,8 @@ function makeSelection(playerSelection) {
         : "It's a tie!";
     startCommand.innerHTML = winMessage;
     round10.disabled = true;
-  } else if (round > 10) {
     buttons.forEach((button) => (button.disabled = true));
-  }
-
-  if (round === 15) {
+  } else if (round === 15) {
     const winMessage =
       playerScore > computerScore
         ? "You win!"
@@ -84,11 +78,7 @@ function makeSelection(playerSelection) {
         : "It's a tie!";
     startCommand.innerHTML = winMessage;
     round15.disabled = true;
-  } else if (round > 15) {
-    buttons.forEach((button) => (button.disabled = true));
-  }
-
-  if (round === 20) {
+  } else if (round === 20) {
     const winMessage =
       playerScore > computerScore
         ? "You win!"
@@ -97,10 +87,10 @@ function makeSelection(playerSelection) {
         : "It's a tie!";
     startCommand.innerHTML = winMessage;
     round20.disabled = true;
-  } else if (round > 20) {
     buttons.forEach((button) => (button.disabled = true));
   }
 }
+
 const clickStone = () => {
   makeSelection("stone");
 };

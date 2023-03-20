@@ -1,105 +1,103 @@
-const userWindow = document.querySelector(".user-window");
-const compWindow = document.querySelector(".comp-window");
-const round5Button = document.querySelector(".round5");
-const round10Button = document.querySelector(".round10");
-const round15Button = document.querySelector(".round15");
-const round20Button = document.querySelector(".round20");
-const userCountDisplay = document.querySelector(".user-count");
-const compCountDisplay = document.querySelector(".comp-count");
-const startCommand = document.querySelector(".start-command");
-const stoneButton = document.querySelector(".stone");
-const paperButton = document.querySelector(".paper");
-const scissorsButton = document.querySelector(".scissors");
-const restartButton = document.querySelector(".restart");
+const roundsSection = document.querySelector(".rounds-section");
+const inputRadio = document.querySelector('input[name="rounds"]:checked');
+const userScore_span = document.querySelector(".user-count");
+const computerScore_span = document.querySelector(".comp-count");
+const scoreBoard_div = document.querySelector(".user-comp__section");
+const result_p = document.querySelector(".start-command");
+const rock_div = document.querySelector(".stone");
+const paper_div = document.querySelector(".paper");
+const scissors_div = document.querySelector(".scissors");
 
-let playerScore = 0; //Variablen in diesem Code (playerScore, computerScore, round) sind so definiert, dass sie den Spielstand und die Anzahl der Runden enthalten.
+let userScore = 0;
 let computerScore = 0;
-let round = 0;
-const buttons = [stoneButton, paperButton, scissorsButton];
-const moves = ["stone", "paper", "scissors"]; //  Dieser Code definiert eine Liste von Aktionen, aus denen der Spieler wählen kann
+let gameRounds = 0;
 
-//Diese Funktion unten(payGame) bestimmt das Ergebnis des Spiels basierend auf der Wahl des Spielers und der zufälligen Wahl des Computers. Die Parameter playerSelection und computerSelection sind der Zug, den der Benutzer auswählt, und der Zug, den der Computer zufällig auswählt. Die Funktion gibt einen Wert zurück, wenn der Spieler gewinnt, verliert oder unentschieden spielt.
-function playGame(playerSelection, computerSelection) {
-  if (playerSelection === computerSelection) {
-    return "draw";
-  } else if (
-    (playerSelection === "stone" && computerSelection === "scissors") ||
-    (playerSelection === "paper" && computerSelection === "stone") ||
-    (playerSelection === "scissors" && computerSelection === "paper")
-  ) {
-    playerScore++;
-    return "win";
-  } else {
-    computerScore++;
-    return "lose";
+function getComputerPlay() {
+  const choices = ["stone", "paper", "scissors"];
+  const randomNumber = Math.floor(Math.random() * 3);
+  return choices[randomNumber];
+}
+
+function convertToWord(word) {
+  if (word === "stone") return "Stone";
+  if (word === "paper") return "Paper";
+  if (word === "scissors") return "Scissors";
+}
+
+function win(userPlayer, computerPlayer) {
+  userScore++;
+  userScore_span.innerHTML = userScore;
+  computerScore_span.innerHTML = computerScore;
+  result_p.innerHTML = `${convertToWord(userPlayer)} beats ${convertToWord(
+    computerPlayer
+  )}.`;
+}
+
+function lose(userPlayer, computerPlayer) {
+  computerScore++;
+  userScore_span.innerHTML = userScore;
+  computerScore_span.innerHTML = computerScore;
+  result_p.innerHTML = `${convertToWord(userPlayer)} loses to ${convertToWord(
+    computerPlayer
+  )}.`;
+}
+
+function draw(userPlayer, computerPlayer) {
+  userScore_span.innerHTML = userScore;
+  computerScore_span.innerHTML = computerScore;
+  result_p.innerHTML = `${convertToWord(userPlayer)} ties with ${convertToWord(
+    computerPlayer
+  )}.`;
+}
+
+function game(userPlayer) {
+  const computerPlayer = getComputerPlay();
+  switch (userPlayer + computerPlayer) {
+    case "stonescissors":
+    case "paperstone":
+    case "scissorspaper":
+      win(userPlayer, computerPlayer);
+      break;
+    case "scissorsstone":
+    case "stonespaper":
+    case "paperscissors":
+      lose(userPlayer, computerPlayer);
+      break;
+    case "stonestone":
+    case "paperpaper":
+    case "scissorsscissors":
+      draw(userPlayer, computerPlayer);
+      break;
+  }
+
+  gameRounds++;
+  if (gameRounds >= numRounds) {
+    if (userScore > computerScore) {
+      result_p.innerHTML = `You win!`;
+    } else if (computerScore > userScore) {
+      result_p.innerHTML = `Computer wins!`;
+    } else {
+      result_p.innerHTML = `It's a tie!`;
+    }
+    rock_div.disabled = true;
+    paper_div.disabled = true;
+    scissors_div.disabled = true;
   }
 }
 
-function makeSelection(playerSelection) {
-  const computerSelection = moves[Math.floor(Math.random() * 3)]; // Dieser Code bewirkt, dass der Computer einen zufälligen Zug auswählt.
-  const result = playGame(playerSelection, computerSelection); // Dieser Code berechnet das Ergebnis des Spiels basierend auf der Wahl des Spielers und der Wahl des Computers.
+function mainSelection() {
+  rock_div.addEventListener("click", function () {
+    game("stone");
+  });
 
-  userWindow.innerHTML = playerSelection;
-  compWindow.innerHTML = computerSelection;
-  round++;
+  paper_div.addEventListener("click", function () {
+    game("paper");
+  });
 
-  if (result === "win") {
-    userCountDisplay.innerHTML = parseInt(userCountDisplay.innerHTML) + 1;
-  } else if (result === "lose") {
-    compCountDisplay.innerHTML = parseInt(compCountDisplay.innerHTML) + 1;
-  }
-
-  if (round === 5) {
-    const winMessage =
-      playerScore > computerScore
-        ? "You win!"
-        : computerScore > playerScore
-        ? "Computer wins!"
-        : "It's a tie!";
-    startCommand.innerHTML = winMessage;
-    round5Button.disabled = true;
-    buttons.forEach((button) => (button.disabled = true));
-  } else if (round === 10) {
-    const winMessage =
-      playerScore > computerScore
-        ? "You win!"
-        : computerScore > playerScore
-        ? "Computer wins!"
-        : "It's a tie!";
-    startCommand.innerHTML = winMessage;
-    round10Button.disabled = true;
-    buttons.forEach((button) => (button.disabled = true));
-  } else if (round === 15) {
-    const winMessage =
-      playerScore > computerScore
-        ? "You win!"
-        : computerScore > playerScore
-        ? "Computer wins!"
-        : "It's a tie!";
-    startCommand.innerHTML = winMessage;
-    round15Button.disabled = true;
-  } else if (round === 20) {
-    const winMessage =
-      playerScore > computerScore
-        ? "You win!"
-        : computerScore > playerScore
-        ? "Computer wins!"
-        : "It's a tie!";
-    startCommand.innerHTML = winMessage;
-    round20Button.disabled = true;
-    buttons.forEach((button) => (button.disabled = true));
-  }
+  scissors_div.addEventListener("click", function () {
+    game("scissors");
+  });
 }
 
-const clickStone = () => {
-  makeSelection("stone");
-};
-const clickPaper = () => {
-  makeSelection("paper");
-};
-const clickScissors = () => {
-  makeSelection("scissors");
-};
-const clickRestart = () => {
-  location.reload();
-};
+mainSelection();
+

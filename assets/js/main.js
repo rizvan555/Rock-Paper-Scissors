@@ -100,3 +100,7 @@ function mainSelection() {
 }
 
 mainSelection();
+
+const clickRestart = () => {
+  location.reload();
+};

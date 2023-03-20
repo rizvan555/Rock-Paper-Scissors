@@ -13,9 +13,9 @@ let computerScore = 0;
 let gameRounds = 0;
 
 function getComputerPlay() {
-  const choices = ["stone", "paper", "scissors"];
+  const moves = ["stone", "paper", "scissors"];
   const randomNumber = Math.floor(Math.random() * 3);
-  return choices[randomNumber];
+  return moves[randomNumber];
 }
 
 function convertToWord(word) {
@@ -100,4 +100,3 @@ function mainSelection() {
 }
 
 mainSelection();
-
